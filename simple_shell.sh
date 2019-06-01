@@ -8,15 +8,15 @@ echo "Current RAM"
 free -m
 #
 echo "System updating ... "
-apt update -y && apt -y upgrade && apt install build-essential -y && apt install wget git zip unzip vim nano dialog curl -y
+apt update -y && apt -y upgrade && apt install build-essential -y && apt install wget git zip unzip vim nano dialog curl lsb-release -y
 echo "System upgrade complete."
 
 #SWAP memory
 echo "For better performance on processing, we can create virtual RAM (SWAP Memory) on your system"
-echo "Do you want to proceed ? For yes Press y/Y  and n/N for NO: 
+echo "Do you want to proceed ? For yes Press y/Y  and n/N for NO: "
 read RESPONSE
 
-if [[ ${RESPONSE} -eq y|Y ]]
+if [ $RESPONSE =  "y" ];
 	then
 	echo "Enter the memory that you want to make your SWAP in Mega Byte (e.g. 1024)"
 	read MEMORY
