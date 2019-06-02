@@ -90,7 +90,7 @@ apt autoremove -y
 mysql -uroot -p${DBPASS} -e "CREATE DATABASE mywp;"
 mysql -uroot -p${DBPASS} -e " CREATE USER 'mywp'@'localhost' IDENTIFIED BY '${DBPASS}';"
 mysql -uroot -p${DBPASS} -e "GRANT ALL PRIVILEGES ON \`mywp\` . * TO 'mywp'@'localhost' WITH GRANT OPTION;FLUSH PRIVILEGES;"
-echo "Database configured!\n"
+echo "\n ${bold}${green}Database configured!${normal}\n"
 sed -i "s#define( 'DB_NAME', 'database_name_here' );#define( 'DB_NAME', 'mywp' );#g" /var/www/html/wp-config.php
 sed -i "s#define( 'DB_USER', 'username_here' );#define( 'DB_USER', 'mywp' );#g" /var/www/html/wp-config.php
 sed -i "s#define( 'DB_PASSWORD', 'password_here' );#define( 'DB_PASSWORD', '${DBPASS}' );#g" /var/www/html/wp-config.php
