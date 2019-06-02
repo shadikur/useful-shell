@@ -45,7 +45,11 @@ else
 fi
 
 #Webserver, DB and PHP
-apt install nginx expect mysql-server php -y
+apt install apache2 expect mysql-server php php-common php-cli php-mbstring  php-zip  php php-fpm php-mysql php-json php-readline php-xml php-curl php-gd php-json  php-opcache -y
+
+#Password Create
+echo "\n${bold}Please choose your MYSQL password: ${normal} \n"
+read DBPASS
 
 SECURE_MYSQL=$(expect -c "
 set timeout 10
@@ -53,7 +57,11 @@ spawn mysql_secure_installation
 expect \"Enter current password for root (enter for none):\"
 send \"$MYSQL\r\"
 expect \"Change the root password?\"
-send \"n\r\"
+send \"y\r\"
+expect \"New password:\"
+send  \"${DBPASS}\"
+expect \"Re-enter new password:\"
+send \"${DBPASS}\"
 expect \"Remove anonymous users?\"
 send \"y\r\"
 expect \"Disallow root login remotely?\"
@@ -69,12 +77,25 @@ echo "$SECURE_MYSQL"
 echo "MYSQL is ready for use\n"
 apt-get  -y purge expect
 echo "WordPress Donwloading...\n"
-cd /var//wwww/html
+rm -rf /var/www/html/*
 wget https://en-gb.wordpress.org/latest-en_GB.zip
 unzip latest*.zip
 rm -rf latest*
-cd wordpress
-mv * ..
+cp -R wordpress/* /var/www/html/
 rm -rf wordpress
+cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+chown -R www-data:www-data /var/www/html/
+apt autoremove -y
 
-echo "\n${bold}${green}our site is ready. Please configure the standard settings by visiting on a web browser.${normal}"
+mysql -uroot -p${DBPASS} -e "CREATE DATABASE mywp;"
+mysql -uroot -p${DBPASS} -e " CREATE USER 'mywp'@'localhost' IDENTIFIED BY '${DBPASS}';"
+mysql -uroot -p${DBPASS} -e "GRANT ALL PRIVILEGES ON \`mywp\` . * TO 'mywp'@'localhost' WITH GRANT OPTION;FLUSH PRIVILEGES;"
+echo "Database configured!\n"
+sed -i "s#define( 'DB_NAME', 'database_name_here' );#define( 'DB_NAME', 'mywp' );#g" /var/www/html/wp-config.php
+sed -i "s#define( 'DB_USER', 'username_here' );#define( 'DB_USER', 'mywp' );#g" /var/www/html/wp-config.php
+sed -i "s#define( 'DB_PASSWORD', 'password_here' );#define( 'DB_PASSWORD', '${DBPASS}' );#g" /var/www/html/wp-config.php
+service apache2 restart
+service mysql restart
+echo "\n  ${bold}${green}Your site is ready. Please configure the standard settings by visiting on a web browser.${normal}"
+
+echo "\n  Please remember that your MYSQL Root Password is ${bold}${DBPASS}${normal}\n\n"
