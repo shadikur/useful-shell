@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/useful-shell/badge/?version=latest)](https://useful-shell.readthedocs.io/en/latest/?badge=latest)
+
 # Only for Debian and Ubuntu OS
 
 - Simple_Shell.sh --> Update , Upgrade and Create SWAP Memory
