@@ -56,7 +56,9 @@ wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
 sudo dpkg -i mysql-apt-config*
 apt update -y && apt -y upgrade
 
-apt install apache2 expect mysql-server php7.3 php7.3-common php7.3-cli php7.3-mbstring  php7.3-zip php7.3-fpm php7.3-mysql php7.3-json php7.3-readline php7.3-xml php7.3-curl php7.3-gd php7.3-json php7.3-imap php7.3-odbc php7.3-opcache -y
+apt install apache2 expect mysql-server php7.3 php7.3-common php7.3-cli php7.3-mbstring  php7.3-zip php7.3-fpm php7.3-mysql php7.3-json php7.3-readline php7.3-xml php7.3-curl php7.3-gd php7.3-json php7.3-imap php7.3-odbc php7.3-opcache libapache2-mod-php7.3 libapache2-mod-php -y
+
+sudo a2dismod mpm_event && sudo a2enmod mpm_prefork && sudo a2enmod php7.3
 
 #Update PHP Settings
 sleep 2
