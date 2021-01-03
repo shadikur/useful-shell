@@ -45,7 +45,23 @@ else
 fi
 
 #Webserver, DB and PHP
-apt install apache2 expect mysql-server php php-common php-cli php-mbstring  php-zip  php php-fpm php-mysql php-json php-readline php-xml php-curl php-gd php-json  php-opcache -y
+apt-get -y install apt-transport-https lsb-release ca-certificates
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+apt-get update
+
+#MySQL Server Installation
+cd /tmp
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+sudo dpkg -i mysql-apt-config*
+
+apt install apache2 expect mysql-server php7.3 php7.3-common php7.3-cli php7.3-mbstring  php7.3-zip php7.3-fpm php7.3-mysql php7.3-json php7.3-readline php7.3-xml php7.3-curl php7.3-gd php7.3-json php7.3-imap php7.3-odbc php7.3-opcache -y
+
+#Update PHP Settings
+sleep 2
+sed 's#post_max_size = .*#post_max_size = 80M#g' -i /etc/php/7.3/fpm/php.ini
+sed 's#upload_max_filesize = .*#upload_max_filesize = 80M#g' -i /etc/php/7.3/fpm/php.ini
+sed 's#;max_input_vars = .*#max_input_vars = 8000#g' -i /etc/php/7.3/fpm/php.ini
 
 #Password Create
 echo "\n${bold}Please choose your MYSQL password: ${normal} \n"
