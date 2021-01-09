@@ -25,4 +25,4 @@ chmod +x wp_ready.sh
 ```
 
 Follow the rest of instruction. Let me know if you need any further help. Thank you very much for reading.
-Contact me if you need any help or support [https://www.shadikur.com/contact]
+Contact me if you need any help or support https://www.shadikur.com/contact
