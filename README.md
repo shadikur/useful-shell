@@ -24,4 +24,4 @@ chmod +x wp_ready.sh
 ./wp_ready.sh
 ```
 
-Follow the rest of instruction. Let me know if you need any further help.
+Follow the rest of instruction. Let me know if you need any further help. Thank you very much for reading.
