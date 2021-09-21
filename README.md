@@ -24,5 +24,12 @@ chmod +x wp_ready.sh
 ./wp_ready.sh
 ```
 
+
+
+# Using Simple Shell
+
+````
+wget https://raw.githubusercontent.com/shadikur/useful-shell/master/simple_shell.sh && chmod +x simple_shell.sh && ./simple_shell.sh
+````
 Follow the rest of instruction. Let me know if you need any further help. Thank you very much for reading.
 Contact me if you need any help or support https://www.shadikur.com/contact
