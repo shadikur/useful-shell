@@ -14,7 +14,7 @@ free -m
 #
 echo "\n"
 echo "${bold}System updating ... \n"
-apt update -y && apt -y upgrade && apt install build-essential -y && apt install wget git zip unzip vim nano dialog curl lsb-release -y
+apt update -y && apt -y upgrade && apt install build-essential -y && apt install wget git zip unzip vim nano dialog curl lsb-release software-properties-common -y
 echo  "\n${bold}${green}System upgrade complete.${normal} \n"
 
 #SWAP memory
