@@ -51,11 +51,11 @@ apt-get -y install apt-transport-https lsb-release ca-certificates
 apt-get update
 
 #MySQL Server Installation
-cd /tmp
-wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
-sudo dpkg -i mysql-apt-config*
-apt update -y && apt -y upgrade
-apt install apache2 expect mysql-server php php-common php-cli php-mbstring  php-zip php-fpm php-mysql php-json php-readline php-xml php-curl php-gd php-imap php-odbc php-opcache libapache2-mod-php libapache2-mod-php -y
+#cd /tmp
+#wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+#sudo dpkg -i mysql-apt-config*
+#apt update -y && apt -y upgrade
+apt install apache2 expect mariadb-server php php-common php-cli php-mbstring  php-zip php-fpm php-mysql php-json php-readline php-xml php-curl php-gd php-imap php-odbc php-opcache libapache2-mod-php libapache2-mod-php -y
 
 sudo a2dismod mpm_event && sudo a2enmod mpm_prefork && sudo a2enmod php7.3
 
