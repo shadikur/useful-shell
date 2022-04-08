@@ -104,7 +104,7 @@ rm -rf wordpress
 cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 wget https://files.phpmyadmin.net/phpMyAdmin/4.9.10/phpMyAdmin-4.9.10-english.zip
 unzip phpMyAdmin-4.9.10-english.zip
-mv phpMyAdmin-4.9.10-english  phpMyAdmin
+mv phpMyAdmin-4.9.10-english  /var/www/html/phpMyAdmin
 rm -rf phpMyAdmin-4.9.10-english.zip
 chown -R www-data:www-data /var/www/html/
 apt autoremove -y
