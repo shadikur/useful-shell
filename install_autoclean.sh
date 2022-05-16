@@ -11,7 +11,7 @@ wget https://raw.githubusercontent.com/shadikur/useful-shell/master/autoclean.sh
 
 
 #Set Cron
-echo " * * * * * bash /usr/src/autoclean.sh 2>&1 > /opt/autoclean.log" >> /etc/crontab
+echo " * * * * * bash /usr/src/autoclean.sh 2>&1 > /opt/autoclean.log" >> /var/spool/cron/root
 
 #Restart Cron
 systemctl crond restart
