@@ -7,7 +7,7 @@
 #Go to directory
 mkdir -p /opt/autoclean
 cd /opt/autoclean
-wget URL
+wget https://raw.githubusercontent.com/shadikur/useful-shell/master/autoclean.sh
 
 
 #Set Cron
