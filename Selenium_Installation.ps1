@@ -2,7 +2,7 @@
 #Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
 $source = 'https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.141.59/selenium-java-3.141.59.zip'
 $chromeDriver = 'https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_win32.zip'
-$javaJDK = 'http://java.a2zlab.online/s/B9ffYZSHz9SYNBS/download/jdk-11.0.15_windows-x64_bin.exe'
+$java = 'http://java.a2zlab.online/s/B9ffYZSHz9SYNBS/download/jdk-11.0.15_windows-x64_bin.exe'
 $destination = 'c:\java'
 $driverPath = 'c:\java\driver'
 $filePath = 'c:\java\selenium-java-3.141.59.zip'
