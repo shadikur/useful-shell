@@ -36,9 +36,8 @@ Write-Host "Java 11.0.15 has been installed... " -ForegroundColor Yellow -Backgr
 Start-Sleep 1
 Write-Host "Cleaning temp files..."
 Remove-Item -Path $destination\*.zip*
-Start-Sleep 3
-Remove-Item -Path $destination\jdk-11.0.15_windows-x64_bin.exe
 Remove-Item -Path $driverPath\*.zip*
+Start-Sleep 10
+Remove-Item -Path $destination\jdk-11.0.15_windows-x64_bin.exe
 Start-Sleep 1
-Write-Host "Completed, you can configure selenium from eclips now `n`n" -ForegroundColor Yellow -BackgroundColor Black
 Write-Host "Absolute path for ChromeDriver: $driverPath\chromedriver.exe `n" -ForegroundColor DarkGreen -BackgroundColor Black
