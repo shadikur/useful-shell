@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OLDIPV4='157.90.251.60' # enter here
+OLDIPV4='' # enter here
 NEWIPV4=$(curl ipinfo.io/ip)
 
 grep -rl "$OLDIPV4" /etc | xargs sed -i "s#$OLDIPV4#$NEWIPV4#g"
