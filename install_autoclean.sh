@@ -12,7 +12,7 @@ chmod +x /opt/autoclean/autoclean.sh
 
 
 #Set Cron
-echo " * * * * * bash /usr/src/autoclean.sh 2>&1 > /opt/autoclean.log" >> /var/spool/cron/root
+echo " * * * * * bash /opt/autoclean/autoclean.sh 2>&1 > /opt/autoclean.log" >> /var/spool/cron/root
 
 #Restart Cron
-systemctl restart crond
+service crond restart
