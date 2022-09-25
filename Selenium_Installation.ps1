@@ -1,12 +1,10 @@
-#!ps
+﻿#!ps
 #Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
 $source = 'https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.141.59/selenium-java-3.141.59.zip'
 $chromeDriver = 'https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_win32.zip'
-$javaDL = 'http://java.a2zlab.online/s/B9ffYZSHz9SYNBS/download/jdk-11.0.15_windows-x64_bin.exe'
 $destination = 'c:\java'
 $driverPath = 'c:\java\driver'
 $filePath = 'c:\java\selenium-java-3.141.59.zip'
-
 if (Test-Path -Path $destination) {
     Write-Host "Java folder already exists, proceeding to next step" -ForegroundColor Black -BackgroundColor White
 }
@@ -14,11 +12,6 @@ else {
     mkdir $driverPath
     Write-Host "Java folder was not there, so it has been created now." -ForegroundColor Black -BackgroundColor White
 }
-
-Write-Host "Downloading Java ... " -ForegroundColor Yellow -BackgroundColor Black
-Invoke-WebRequest -Uri $javaDL -OutFile $destination\jdk-11.0.15_windows-x64_bin.exe
-Start-Sleep 2
-
 Write-Host "Downloading Selenium ... " -ForegroundColor Yellow -BackgroundColor Black
 Invoke-WebRequest -Uri $source -OutFile $filePath
 Start-Sleep 2
@@ -29,15 +22,10 @@ Write-Host "Download has been completed, extracting the file now." -ForegroundCo
 Start-Sleep 2
 Expand-Archive -LiteralPath $filePath -DestinationPath $destination\slenium
 Expand-Archive -LiteralPath $destination\chromedriver_win32.zip -DestinationPath $destination\driver
-Write-Host "Installing Java ... " -ForegroundColor Yellow -BackgroundColor Black
-c:\java\jdk-11.0.15_windows-x64_bin.exe /s
-Start-Sleep 2
-Write-Host "Java 11.0.15 has been installed... " -ForegroundColor Yellow -BackgroundColor Black
 Start-Sleep 1
 Write-Host "Cleaning temp files..."
 Remove-Item -Path $destination\*.zip*
 Remove-Item -Path $driverPath\*.zip*
-Start-Sleep 10
-Remove-Item -Path $destination\jdk-11.0.15_windows-x64_bin.exe
 Start-Sleep 1
+Write-Host "Completed, you can configure selenium from eclips now `n`n" -ForegroundColor Yellow -BackgroundColor Black
 Write-Host "Absolute path for ChromeDriver: $driverPath\chromedriver.exe `n" -ForegroundColor DarkGreen -BackgroundColor Black
