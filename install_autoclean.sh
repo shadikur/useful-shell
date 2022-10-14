@@ -15,4 +15,4 @@ chmod +x /opt/autoclean/autoclean.sh
 echo " * * * * * bash /opt/autoclean/autoclean.sh 2>&1 > /opt/autoclean.log" >> /var/spool/cron/root
 
 #Restart Cron
-service crond restart
+service cron restart
