@@ -10,12 +10,12 @@ day=$(date +%u)
 # Get current hour
 hour=$(date +%H)
 
-# Stop Freeswitch if it's a weekday and currently before 6pm
-if [[ $day -ge 1 && $day -le 6 ]] && [[ $hour -ge 6 && $hour -lt 18 ]]; then
+# Stop Freeswitch if it's a weekday and currently before 6am, or if it's Sunday
+if [[ $day -ge 1 && $day -le 6 && $hour -lt 6 ]] || [[ $day -eq 0 ]]; then
   systemctl stop freeswitch
 fi
 
-# Start Freeswitch if it's a weekday and currently after 6pm, or if it's Sunday
-if [[ $day -ge 1 && $day -le 6 && $hour -ge 18 ]] || [[ $day -eq 0 ]]; then
+# Start Freeswitch if it's a weekday and currently after 6pm and not Sunday
+if [[ $day -ge 1 && $day -le 6 && $hour -ge 18 ]] && [[ $day -ne 0 ]]; then
   systemctl start freeswitch
 fi
